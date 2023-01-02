@@ -7,6 +7,9 @@
 #copy fonts to system folder
 sudo cp -rp ./font-awesome /usr/share/fonts/
 
+#install fontcofig tools and redirect output to /dev/null
+sudo apt install fontconfig -y > /dev/null 2>&1
+
 #clear and regenerate font cache
 fc-cache -f
 
