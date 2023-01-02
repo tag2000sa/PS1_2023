@@ -26,11 +26,11 @@ if [[ ! -s check.tmp ]]; then
     if [[ $user_bashrc == $root_user ]]; then
         #add PS1 format for root user
         echo '# PS1 for root user' >> ${user_bashrc} 2>/dev/null
-        echo 'export PS1="\n${white_txt}${light_red_bg} ${OS_ICON} \u ${format_off}${light_red_txt}${light_yellow_bg}${black_txt}  \h${light_green_txt}${red_txt}  \w ${format_off}${light_yellow_txt} \n ${light_cyan_txt}${bold_txt}# ${format_off}"' >> ${user_bashrc} 2>/dev/null
+        echo 'export PS1="\n${white_txt}${light_red_bg} ${OS_ICON} \u ${format_off}${light_red_txt}${light_yellow_bg}${black_txt}  \h${light_green_txt}${red_txt}  \w ${format_off}${light_yellow_txt} \n ${light_cyan_txt}${bold_txt}# ${format_off}"' >> ${user_bashrc} 2>/dev/null
     else
         #add PS1 format for normal user
         echo "# PS1 for normal user" >> ${user_bashrc}
-        echo 'export PS1="${black_bg}${light_red_txt}${OS_ICON} \u${light_blue_txt}  \h${light_green_txt}  \$${light_magenta_txt}  ${light_magenta_txt}\w \n${white_txt} ╰─ ${format_off}"' >> ${user_bashrc}
+        echo 'export PS1="${black_bg}${light_red_txt} ${OS_ICON} \u${light_blue_txt}  \h${light_green_txt}  \$${light_magenta_txt}  ${light_magenta_txt}\w \n${white_txt} ╰─ ${format_off}"' >> ${user_bashrc}
     fi
 fi
 #remove temporary files
