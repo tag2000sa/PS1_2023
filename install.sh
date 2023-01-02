@@ -1,22 +1,34 @@
 #!/bin/bash
 
+echo 'Install tools ...'
+# install wget tool
+sudo apt install wget -y > /dev/null 2>&1
+
+# install fontcofig tools and redirect output to /dev/null
+sudo apt install fontconfig -y > /dev/null 2>&1
+
+# clear and regenerate font cache
+sudo fc-cache -f > /dev/null 2>&1
+
 ## Install NerdFonts (https://nerdfonts.com)
-echo "Install NerdFonts ..."
+echo 'Install NerdFonts ...'
 
 # create temporary folder
+echo ' - create temporary folder nf.tmp'
 if [[ ! -e nf.tmp ]]; then
     mkdir nf.tmp 
 fi
+# get into the new created folder (nf.tmp)
 cd nf.tmp
 
 # download JetBrainsMono NerdFonts
-echo '* Downloading JetBrainsMono font.'
-wget -nc https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip 
+echo ' - downloading JetBrainsMono font.'
+wget -nc https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip > /dev/null 2>&1
 
-echo '* Installing JetBrainsMono font.'
+echo ' - installing JetBrainsMono font.'
 # unzip fonts
 if [[ ! -e JetBrainsMono ]]; then
-    unzip JetBrainsMono.zip -d JetBrainsMono
+    unzip -qq JetBrainsMono.zip -d JetBrainsMono
 fi 
 
 # move fonts to (/usr/share/fonts/) or (/usr/local/share/fonts/)
@@ -30,6 +42,7 @@ fc-cache -f &>/dev/null
 
 # remove temporary folder
 rm -rf nf.tmp
+# back to parent folder
 cd ..
 
 # run script (PS1_Jan2023.sh) as normal user

@@ -4,15 +4,6 @@
 #Update Date: 01/01/23 23:02:32
 #Subject: PS1_Jan2023
 
-#copy fonts to system folder
-#cp -rp ./font-awesome /usr/share/fonts/
-
-#install fontcofig tools and redirect output to /dev/null
-apt install fontconfig -y > /dev/null 2>&1
-
-#clear and regenerate font cache
-fc-cache -f
-
 ##check .bashrc for previous configuration variables before adding the new configuration
 normal_user="$HOME/.bashrc"
 root_user="/root/.bashrc"
