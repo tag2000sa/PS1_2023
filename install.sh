@@ -26,7 +26,7 @@ fi
 cd nf.tmp
 
 # download JetBrainsMono NerdFonts
-echo -e " - downloading JetBrainsMono font.\c"
+echo -e " - downloading JetBrainsMono font\c"
 wget -nc https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip > /dev/null 2>&1
 echo -e "\tdone"
 
@@ -45,7 +45,7 @@ echo -e "\tdone"
 # update and regenerate font cache
 echo -e " - updating fonts cache\c"
 fc-cache -f &>/dev/null
-echo -e "\tdone"
+echo -e "\t\tdone"
 
 # back to parent folder
 cd ..
@@ -67,7 +67,7 @@ echo -e "\tdone"
 # re-run script (PS1_Jan2023.sh) as root user
 echo -e " - install script as root user\c"
 sudo ./PS1_Jan2023.sh
-echo -e "\tdone"
+echo -e "\t\tdone"
 
 # complete installation message
 echo -e "Installation Completed.\n"
