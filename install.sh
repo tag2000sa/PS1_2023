@@ -11,7 +11,7 @@ sudo apt install fontconfig -y > /dev/null 2>&1
 # clear and regenerate font cache
 sudo fc-cache -f > /dev/null 2>&1
 # complete installation message
-echo ' done'
+echo -e "\t\t\tdone"
 
 ## Install NerdFonts (https://nerdfonts.com)
 echo 'Install NerdFonts ...'
@@ -45,7 +45,7 @@ echo -e "\tdone"
 # update and regenerate font cache
 echo -e " - updating fonts cache\c"
 fc-cache -f &>/dev/null
-echo -e "\t\tdone"
+echo -e "\t\t\tdone"
 
 # back to parent folder
 cd ..
