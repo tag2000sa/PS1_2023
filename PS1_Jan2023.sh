@@ -1,8 +1,9 @@
 #!/bin/bash
 #Author: Turky Abdulaziz Saderaldin
 #Create Date: 01/01/23 23:02:28
-#Update Date: 01/01/23 23:02:32
-#Subject: PS1_Jan2023
+#Update Date: 02/01/23 19:41:42
+#File Name: PS1_Jan2023.sh
+#Subject: Primary Prompt String (PS1) style Jan-2023
 
 ##check .bashrc for previous configuration variables before adding the new configuration
 normal_user="$HOME/.bashrc"

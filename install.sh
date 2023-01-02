@@ -1,4 +1,10 @@
 #!/bin/bash
+#Author: Turky Abdulaziz Saderaldin
+#Create Date: 01/01/23 23:02:28
+#Update Date: 02/01/23 19:40:42
+#File Name: install.sh
+#Subject: Installation Script
+
 sudo echo ''
 # start installation message
 echo -e "Install tools ...\c"
