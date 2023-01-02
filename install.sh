@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo echo ''
 # start installation message
 echo -e "Install tools ...\c"
 
