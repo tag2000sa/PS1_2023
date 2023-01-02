@@ -13,5 +13,5 @@ bold_txt='\[\e[1m\]' format_off='\[\e[0m\]'
 #OS_ICON=   # Ubuntu
 #OS_ICON=   # Windows
 #OS_ICON=   # Android
-#OS_ICON=   # Tux
+OS_ICON=   # Tux
 #####end PS1 Block#####
