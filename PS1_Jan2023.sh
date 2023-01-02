@@ -5,7 +5,7 @@
 #Subject: PS1_Jan2023
 
 #copy fonts to system folder
-cp -rp ./font-awesome /usr/share/fonts/
+#cp -rp ./font-awesome /usr/share/fonts/
 
 #install fontcofig tools and redirect output to /dev/null
 apt install fontconfig -y > /dev/null 2>&1
@@ -43,4 +43,4 @@ if [[ ! -s check.tmp ]]; then
     fi
 fi
 #remove temporary files
-rm ./*.tmp
+rm -f ./check.tmp

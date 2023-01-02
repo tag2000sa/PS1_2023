@@ -29,7 +29,7 @@ echo '* Updating fonts cache.'
 fc-cache -f &>/dev/null
 
 # remove temporary folder
-rm -rf *.tmp
+rm -rf nf.tmp
 cd ..
 
 # run script (PS1_Jan2023.sh) as normal user
