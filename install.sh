@@ -10,10 +10,10 @@ sudo echo ''
 # Error Messages
 err1='more than one input.'
 err2="invalid input.\nvalid values are {JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC}"
-err3="file (${dd}) not found."
+err3="file not found."
 
 # function test input exist in a list
-isIn() { [[ $2 =~ (^|[[:space:]])$1($|[[:space:]]) ]] }
+function isIn() { [[ $2 =~ (^|[[:space:]])$1($|[[:space:]]) ]]; }
 
 # set default design input
 input=`date +%b` && input=${input^^}
@@ -48,7 +48,7 @@ esac
 
 # check design file existance
 if [[ ! -e ./${dd} ]]; then
-    echo -e " Error: ${err3}" && exit 1
+    echo -e " Error: $PWD/${dd}\t${err3}" && exit 1
 fi
 
 # start installation message
@@ -110,7 +110,7 @@ if [[ ! -e nf.tmp ]]; then
 fi
 
 # start script installation message
-echo 'Install script ...'
+echo "Install script ... (${dd})"
 # run script as normal user
 echo -e " - install script as normal user\c"
 ./${dd}
