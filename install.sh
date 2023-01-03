@@ -5,7 +5,7 @@
 #File Name: install.sh
 #Subject: Installation Script
 
-sudo echo ''
+sudo echo -e "\c"
 
 # Error Messages
 err1='more than one input.'
@@ -48,65 +48,70 @@ esac
 
 # check design file existance
 if [[ ! -e ./${dd} ]]; then
-    echo -e " Error: $PWD/${dd}\t${err3}" && exit 1
+    echo -e "Error: $PWD/${dd}\t${err3}" && exit 1
 fi
 
 # start installation message
 echo -e "Install tools ...\c"
 
-# install wget tool
-sudo apt install wget -y > /dev/null 2>&1
+# check if needed packages installed
+list="wget fontconfig unzip"
+for package in ${list}; do
+    dpkg -s ${package} 2>/dev/null | grep -q -P 'ok installed'
+    if [[ $? -ne 0 ]]; then
+        # install tools
+        sudo apt install ${package} -y > /dev/null 2>&1
+    fi
+done
 
-# install fontcofig tools and redirect output to /dev/null
-sudo apt install fontconfig -y > /dev/null 2>&1
-
-# clear and regenerate font cache
-sudo fc-cache -f > /dev/null 2>&1
 # complete installation message
 echo -e "\t\t\tdone"
 
 ## Install NerdFonts (https://nerdfonts.com)
-echo 'Install NerdFonts ...'
-
-# create temporary folder
-echo -e " - create temporary folder nf.tmp\c"
-if [[ ! -e nf.tmp ]]; then
-    mkdir nf.tmp 
-    echo -e "\tdone"
-fi
-# get into the new created folder (nf.tmp)
-cd nf.tmp
-
-# download JetBrainsMono NerdFonts
-echo -e " - downloading JetBrainsMono font\c"
-wget -nc https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip > /dev/null 2>&1
-echo -e "\tdone"
-
-echo -e " - installing JetBrainsMono font\c"
-# unzip fonts
-if [[ ! -e JetBrainsMono ]]; then
-    unzip -qq JetBrainsMono.zip -d JetBrainsMono
-fi 
-
-# move fonts to (/usr/share/fonts/) or (/usr/local/share/fonts/)
+# check whether JetBrainsMono already installed or not
 if [[ ! -e /usr/share/fonts/JetBrainsMono ]]; then
-    sudo mv JetBrainsMono /usr/share/fonts/
-fi
-echo -e "\tdone"
+    echo 'Install NerdFonts ...'
 
-# update and regenerate font cache
-echo -e " - updating fonts cache\c"
-fc-cache -f &>/dev/null
-echo -e "\t\t\tdone"
+    # create temporary folder
+    echo -e " - create temporary folder nf.tmp\c"
+    if [[ ! -e nf.tmp ]]; then
+        mkdir nf.tmp 
+        echo -e "\tdone"
+    fi
+    # get into the new created folder (nf.tmp)
+    cd nf.tmp
 
-# back to parent folder
-cd ..
-
-# remove temporary folder
-echo -e " - remove temporary folder nf.tmp\c"
-rm -rf nf.tmp
-if [[ ! -e nf.tmp ]]; then
+    # download JetBrainsMono NerdFonts
+    echo -e " - downloading JetBrainsMono font\c"
+    wget -nc https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip > /dev/null 2>&1
     echo -e "\tdone"
+
+    echo -e " - installing JetBrainsMono font\c"
+    # unzip fonts
+    if [[ ! -e JetBrainsMono ]]; then
+        unzip -qq JetBrainsMono.zip -d JetBrainsMono
+    fi 
+
+    # move fonts to (/usr/share/fonts/) or (/usr/local/share/fonts/)
+    if [[ ! -e /usr/share/fonts/JetBrainsMono ]]; then
+        sudo mv JetBrainsMono /usr/share/fonts/
+    fi
+    echo -e "\tdone"
+
+    # update and regenerate font cache
+    echo -e " - updating fonts cache\c"
+    sudo fc-cache -f &>/dev/null
+    echo -e "\t\t\tdone"
+
+    # back to parent folder
+    cd ..
+
+    # remove temporary folder
+    echo -e " - remove temporary folder nf.tmp\c"
+    rm -rf nf.tmp
+    if [[ ! -e nf.tmp ]]; then
+        echo -e "\tdone"
+    fi
 fi
 
 # start script installation message
